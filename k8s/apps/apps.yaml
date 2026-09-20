@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wallet-ledger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wallet-ledger
+  template:
+    metadata:
+      labels:
+        app: wallet-ledger
+    spec:
+      containers:
+      - name: wallet-ledger
+        image: wallet-ledger:latest
+        imagePullPolicy: Never
+        env:
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: "http://jaeger-collector:4317"
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wallet-ledger
+spec:
+  selector:
+    app: wallet-ledger
+  ports:
+  - port: 8000
+    targetPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transfer-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transfer-api
+  template:
+    metadata:
+      labels:
+        app: transfer-api
+    spec:
+      containers:
+      - name: transfer-api
+        image: transfer-api:latest
+        imagePullPolicy: Never
+        env:
+        - name: LEDGER_SERVICE_URL
+          value: "http://wallet-ledger:8000"
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: "http://jaeger-collector:4317"
+        ports:
+        - containerPort: 8080
+          hostPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: transfer-api
+spec:
+  selector:
+    app: transfer-api
+  ports:
+  - port: 8080
+    targetPort: 8080

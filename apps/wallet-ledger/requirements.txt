@@ -1,0 +1,9 @@
+#Este archivo lista los paquetes externos que el intérprete de Python necesita instalar mediante pip. Cada librería cumple un rol específico en el stack de observabilidad y API.
+fastapi==0.110.0
+uvicorn==0.28.0
+structlog==24.1.0
+prometheus-fastapi-instrumentator==6.1.0
+opentelemetry-api==1.24.0
+opentelemetry-sdk==1.24.0
+opentelemetry-instrumentation-fastapi==0.45b0
+opentelemetry-exporter-otlp-proto-grpc==1.24.0
