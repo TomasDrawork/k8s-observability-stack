@@ -6,7 +6,6 @@
 ![Jaeger](https://img.shields.io/badge/Tracing-Jaeger%20%2F%20OTel-lightblue?logo=jaegertracing)
 ![Python](https://img.shields.io/badge/Backend-FastAPI-green?logo=fastapi)
 
-¡Bienvenido/a! Este repositorio contiene la implementación de un **stack completo de observabilidad en Kubernetes (k3d)** diseñado para monitorear una arquitectura de microservicios distribuida en un entorno bancario / fintech.
 ¡Bienvenido/a! Este repositorio contiene la implementación individual de un **stack completo de observabilidad en Kubernetes (k3d)** diseñado para monitorear una arquitectura de microservicios distribuida en un entorno bancario / fintech.
 
 El objetivo principal de este proyecto es demostrar cómo capturar, visualizar y correlacionar los **3 pilares de la observabilidad (Métricas, Trazas y Logs)** ante escenarios de alta exigencia e incidentes críticos en producción.
@@ -70,7 +69,6 @@ Monitoreo en tiempo real basado en las prácticas SRE de Google:
 - **Errores (Errors):** Tasa de fallas HTTP 4xx y 5xx.
 - **Saturación (Saturation):** Consumo de memoria y recursos de los Pods.
 
-![Dashboard de 4 Golden Signals](screenshots/Normal.png)
 ![Dashboard de 4 Golden Signals en Estado Normal](screenshots/grafana-golden-signals-healthy.png)
 
 ---
@@ -105,7 +103,6 @@ El proyecto incluye un endpoint de simulación de fallas en cascada (`/incident/
 
 Se provocó a propósito un incidente de **Severidad 1 (SEV-1)** por bloqueo de base de datos (*deadlock*) y latencia extrema.
 
-![Pico de Falla en Grafana](screenshots/problem.png)
 ![Pico de Falla en Grafana](screenshots/grafana-sev1-incident-spike.png)
 
 📄 **Informe completo de Root Cause Analysis (RCA):**  
@@ -144,6 +141,4 @@ kubectl apply -f k8s/apps/
 ---
 
 ## 👨‍💻 Autor
-Proyecto desarrollado por **Tomás Drago** como trabajo final de la materia **Observabilidad y Confianza**.
-
 Proyecto desarrollado de forma individual por **Tomás Drago** como trabajo final de la materia **Observabilidad y Confianza**.

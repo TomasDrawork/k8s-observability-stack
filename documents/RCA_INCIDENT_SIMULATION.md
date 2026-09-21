@@ -1,7 +1,6 @@
 # 🚨 Incident Postmortem: Bloqueo Transaccional y Latencia en Wallet-Ledger
 
 **Fecha del Incidente:** 2026-09-20  
-**Autorer:** Tomas Drago
 **Autor:** Tomás Drago  
 **Estado:** Resuelto (Simulación Controlada)  
 **Severidad:** SEV-1 (Degradación de servicio y errores 500)  
@@ -20,7 +19,6 @@ A las 20:05 UTC se detectó un pico de latencia (2000ms - 13000ms) y una tasa de
 - **Errores:** Pico registrado en la tasa de errores **HTTP 500 (Internal Server Error)** en el endpoint `/simulate-failure` y `/incident/trigger`.
 - **Saturación:** Acumulación de memoria en los procesos de `wallet-ledger` (~65.5 MiB) y `transfer-api` (~72.5 MiB).
 
-![Dashboard de Golden Signals durante el Incidente](../screenshots/problem.png)
 ![Dashboard de Golden Signals durante el Incidente](../screenshots/grafana-sev1-incident-spike.png)
 
 ---
@@ -70,4 +68,3 @@ Se obtuvo la entrada exacta del evento con nivel de error:
 - [x] **Manejo de Errores en Gateway:** Inyectar `response.raise_for_status()` en `transfer-api` para asegurar la propagación correcta de códigos de estado HTTP 5xx.
 - [ ] **Circuit Breaker & Timeouts:** Implementar un patrón de Circuit Breaker y ajustar el timeout máximo de HTTPX a 1.5s.
 - [ ] **Alerting Automatizado:** Configurar reglas de alerta en Prometheus para notificar automáticamente ante cualquier tasa de errores 5xx > 2% durante 1 minuto.
-
