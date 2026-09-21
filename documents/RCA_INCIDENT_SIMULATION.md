@@ -1,7 +1,8 @@
 # 🚨 Incident Postmortem: Bloqueo Transaccional y Latencia en Wallet-Ledger
 
 **Fecha del Incidente:** 2026-09-20  
-**Autores:** Equipo de Observabilidad  
+**Autorer:** Tomas Drago
+**Autor:** Tomás Drago  
 **Estado:** Resuelto (Simulación Controlada)  
 **Severidad:** SEV-1 (Degradación de servicio y errores 500)  
 
@@ -20,6 +21,7 @@ A las 20:05 UTC se detectó un pico de latencia (2000ms - 13000ms) y una tasa de
 - **Saturación:** Acumulación de memoria en los procesos de `wallet-ledger` (~65.5 MiB) y `transfer-api` (~72.5 MiB).
 
 ![Dashboard de Golden Signals durante el Incidente](../screenshots/problem.png)
+![Dashboard de Golden Signals durante el Incidente](../screenshots/grafana-sev1-incident-spike.png)
 
 ---
 

@@ -7,6 +7,7 @@
 ![Python](https://img.shields.io/badge/Backend-FastAPI-green?logo=fastapi)
 
 ¡Bienvenido/a! Este repositorio contiene la implementación de un **stack completo de observabilidad en Kubernetes (k3d)** diseñado para monitorear una arquitectura de microservicios distribuida en un entorno bancario / fintech.
+¡Bienvenido/a! Este repositorio contiene la implementación individual de un **stack completo de observabilidad en Kubernetes (k3d)** diseñado para monitorear una arquitectura de microservicios distribuida en un entorno bancario / fintech.
 
 El objetivo principal de este proyecto es demostrar cómo capturar, visualizar y correlacionar los **3 pilares de la observabilidad (Métricas, Trazas y Logs)** ante escenarios de alta exigencia e incidentes críticos en producción.
 
@@ -70,11 +71,14 @@ Monitoreo en tiempo real basado en las prácticas SRE de Google:
 - **Saturación (Saturation):** Consumo de memoria y recursos de los Pods.
 
 ![Dashboard de 4 Golden Signals](screenshots/Normal.png)
+![Dashboard de 4 Golden Signals en Estado Normal](screenshots/grafana-golden-signals-healthy.png)
 
 ---
 
 ### 2. Trazas Distribuidas (Jaeger UI)
 Cada petición genera un flujo visual completo que atraviesa ambos microservicios, midiendo los tiempos exactos de la llamada HTTP y de los procesos internos (`validar_fondos` y `debitar_cuenta`).
+
+![Trazas Distribuidas en Jaeger UI](screenshots/jaeger-distributed-tracing-spans.png)
 
 ---
 
@@ -102,6 +106,7 @@ El proyecto incluye un endpoint de simulación de fallas en cascada (`/incident/
 Se provocó a propósito un incidente de **Severidad 1 (SEV-1)** por bloqueo de base de datos (*deadlock*) y latencia extrema.
 
 ![Pico de Falla en Grafana](screenshots/problem.png)
+![Pico de Falla en Grafana](screenshots/grafana-sev1-incident-spike.png)
 
 📄 **Informe completo de Root Cause Analysis (RCA):**  
 Podés consultar el informe técnico detallado del incidente en [documents/RCA_INCIDENT_SIMULATION.md](documents/RCA_INCIDENT_SIMULATION.md).
@@ -141,3 +146,4 @@ kubectl apply -f k8s/apps/
 ## 👨‍💻 Autor
 Proyecto desarrollado por **Tomás Drago** como trabajo final de la materia **Observabilidad y Confianza**.
 
+Proyecto desarrollado de forma individual por **Tomás Drago** como trabajo final de la materia **Observabilidad y Confianza**.
