@@ -69,7 +69,7 @@ Monitoreo en tiempo real basado en las prácticas SRE de Google:
 - **Errores (Errors):** Tasa de fallas HTTP 4xx y 5xx.
 - **Saturación (Saturation):** Consumo de memoria y recursos de los Pods.
 
-![Dashboard de 4 Golden Signals en Estado Normal](screenshots/grafana-golden-signals-healthy.png)
+![Dashboard de 4 Golden Signals en Estado Normal](screenshots/grafana-healty.png)
 
 ---
 
